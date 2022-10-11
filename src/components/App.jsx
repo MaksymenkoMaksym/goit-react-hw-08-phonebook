@@ -18,9 +18,9 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/home" element={<Layout />}>
           <Route
-            path="/home"
+            index
             element={
               <PrivateRoute redirectTo="/signIn" component={<HomePage />} />
             }
