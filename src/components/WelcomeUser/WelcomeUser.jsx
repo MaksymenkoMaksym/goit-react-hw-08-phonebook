@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOutUser } from 'redux/authOperation';
-import { getAuth } from 'redux/selectors';
+import { logOutUser } from 'redux/auth/authOperation';
+import { getAuth } from 'redux/auth/selectorsAuth';
 import { Avatar, Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { WelcomeDiv } from './WelcomeUser.styled';

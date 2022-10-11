@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { getAuth } from 'redux/selectors';
+import { getAuth } from 'redux/auth/selectorsAuth';
 
 import { WelcomeUser } from 'components/WelcomeUser/WelcomeUser';
-// import { Navigation } from 'components/Navigation/Navigation';
 
 export const Layout = () => {
   const { isAuth } = useSelector(getAuth);

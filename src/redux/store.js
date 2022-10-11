@@ -1,12 +1,10 @@
-import { createStore } from 'redux';
 import {
   combineReducers,
   getDefaultMiddleware,
   configureStore,
 } from '@reduxjs/toolkit';
-// import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
   persistReducer,
@@ -17,8 +15,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authReducer } from './authSlice';
-import { contactsReducer } from './contactsSlice';
+import { authReducer } from './auth/authSlice';
+import { contactsReducer } from './contacts/contactsSlice';
 
 //=====persist
 const persistConfig = {

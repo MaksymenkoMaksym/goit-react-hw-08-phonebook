@@ -1,4 +1,10 @@
-// import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+import { signUpUser } from 'redux/auth/authOperation';
+import { getAuth } from 'redux/auth/selectorsAuth';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,11 +18,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { signUpUser } from 'redux/authOperation';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { getAuth } from 'redux/selectors';
-import { useState } from 'react';
 
 function Copyright(props) {
   return (

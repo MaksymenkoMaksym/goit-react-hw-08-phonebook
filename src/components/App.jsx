@@ -8,7 +8,7 @@ import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/authOperation';
+import { refreshUser } from 'redux/auth/authOperation';
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {

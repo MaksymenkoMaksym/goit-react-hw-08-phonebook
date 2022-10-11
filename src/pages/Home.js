@@ -5,13 +5,15 @@ import PhoneBookForm from 'components/PhoneBookForm/PhoneBookForm';
 import ContactsList from 'components/ContactsList/ContactsList';
 import Section from 'components/Section/Section';
 import InputSearch from 'components/InputSearch/InputSearch';
-import { getAuth, getContacts, getFilter } from 'redux/selectors';
+import { getContacts, getFilter } from 'redux/contacts/contactsSelectors';
+import { getAuth } from 'redux/auth/selectorsAuth';
+
 import {
   fetchTasks,
   deleteContact,
   addContact,
   findByName,
-} from 'redux/operation';
+} from 'redux/contacts/operation';
 import { Loader } from 'components/Loader/Loader';
 
 export const HomePage = () => {

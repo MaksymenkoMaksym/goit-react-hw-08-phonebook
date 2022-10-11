@@ -13,11 +13,10 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useDispatch } from 'react-redux';
-import { logInUser } from 'redux/authOperation';
+import { logInUser } from 'redux/auth/authOperation';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
-// import ua from 'assets/ukraine-heart-shape-flag.svg';
 function Copyright(props) {
   return (
     <Typography
