@@ -21,7 +21,7 @@ export const App = () => {
       <Routes>
         <Route path="/home" element={<Layout />}>
           <Route
-            index
+            path="/home"
             element={
               <PrivateRoute redirectTo="/signIn" component={<HomePage />} />
             }
