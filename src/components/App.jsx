@@ -1,14 +1,15 @@
-import SignInSide from '../pages/Auth';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import SignUp from './SignUp/SignUp';
-
-import { Layout } from './Layout/Layout';
-import { HomePage } from 'pages/Home';
-import { PrivateRoute } from './PrivateRoute/PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperation';
+
+const SignInSide = lazy(() => import('../pages/Auth'));
+const SignUp = lazy(() => import('./SignUp/SignUp'));
+const Layout = lazy(() => import('./Layout/Layout'));
+const HomePage = lazy(() => import('pages/Home'));
+const PrivateRoute = lazy(() => import('./PrivateRoute/PrivateRoute'));
+const RestrictedRoute = lazy(() => import('./RestrictedRoute/RestrictedRoute'));
+
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
