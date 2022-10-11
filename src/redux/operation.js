@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import axiosAuth from 'axiosAuth';
+import { axiosAuth } from './authOperation';
 
-axios.defaults.baseURL = 'https://633bc7a4f11701a65f682164.mockapi.io/contacts';
+// axiosAuth.defaults.baseURL = 'https://633bc7a4f11701a65f682164.mockapi.io/contacts';
 
 export const fetchTasks = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/contacts');
+      const response = await axiosAuth.get('/contacts');
       // При успешном запросе возвращаем промис с данными
       return response.data;
     } catch (e) {
@@ -20,9 +21,9 @@ export const fetchTasks = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (contact, thunkAPI) => {
+  async (contactID, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${contact}`);
+      const response = await axiosAuth.delete(`/contacts/${contactID}`);
 
       return response.data;
     } catch (e) {
@@ -35,7 +36,7 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const response = await axios.post(`/contacts`, contact);
+      const response = await axiosAuth.post(`/contacts`, contact);
 
       return response.data;
     } catch (e) {
@@ -51,7 +52,7 @@ export const findByName = createAsyncThunk(
       if (!name) {
         return '';
       }
-      const response = await axios.get(`/contacts?name=${name}`);
+      const response = await axiosAuth.get(`/contacts?name=${name}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

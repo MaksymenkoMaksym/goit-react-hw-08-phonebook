@@ -10,7 +10,7 @@ const PhoneBookForm = ({ onInputContact }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onInputContact({ name, phone });
+    onInputContact({ name, number: phone });
   };
 
   const handleChange = evt => {

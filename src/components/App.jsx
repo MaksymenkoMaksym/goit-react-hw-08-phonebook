@@ -1,68 +1,46 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PhoneBookForm from './PhoneBookForm/PhoneBookForm';
-import ContactsList from './ContactsList/ContactsList';
-import Section from './Section/Section';
-import InputSearch from './InputSearch/InputSearch';
-import { getContacts, getFilter } from 'redux/selectors';
-import {
-  fetchTasks,
-  deleteContact,
-  addContact,
-  findByName,
-} from 'redux/operation';
-import { Loader } from './Loader/Loader';
-export const App = () => {
-  const { items: contacts, isLoading, error } = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const dispatch = useDispatch();
+import SignInSide from '../pages/Auth';
+import { Route, Routes } from 'react-router-dom';
+import SignUp from './SignUp/SignUp';
 
+import { Layout } from './Layout/Layout';
+import { HomePage } from 'pages/Home';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/authOperation';
+export const App = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  const onInputContact = user => {
-    if (contacts.some(contact => contact.name === user.name)) {
-      return alert(`${user.name} is already in contacts.`);
-    }
-    dispatch(addContact(user));
-  };
-
-  const findByNameFilter = value => {
-    const name = value.trim().toLocaleLowerCase();
-    dispatch(findByName(name));
-  };
-  const onClickDelete = id => {
-    dispatch(deleteContact(id));
-  };
   return (
-    <div>
-      <Section title="PhoneBook -> createAsyncThunk">
-        <PhoneBookForm onInputContact={onInputContact} />
-      </Section>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute redirectTo="/signIn" component={<HomePage />} />
+            }
+          />
 
-      <Section title="Contacts">
-        <InputSearch
-          nameSearch="Find contacts by name"
-          onSearchName={findByNameFilter}
-        />
-        <div
-          style={{
-            width: 'fit-content',
-            margin: ' 0 auto',
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-          }}
-        >
-          {isLoading && <Loader />}
-        </div>
-        <p>{error}</p>
-        <ContactsList
-          onClickDelete={onClickDelete}
-          contacts={filter === '' ? contacts : filter}
-        />
-      </Section>
-    </div>
+          <Route
+            path="/signIn"
+            element={
+              <RestrictedRoute redirectTo="/home" component={<SignInSide />} />
+            }
+          />
+          <Route
+            path="/signUp"
+            element={
+              <RestrictedRoute redirectTo="/home" component={<SignUp />} />
+            }
+          />
+          <Route path="*" element={<div>NotFound</div>} />
+        </Route>
+      </Routes>
+    </>
   );
 };
