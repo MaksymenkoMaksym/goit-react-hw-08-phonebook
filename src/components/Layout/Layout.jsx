@@ -9,7 +9,10 @@ export const Layout = () => {
   const { isAuth } = useSelector(getAuth);
   return (
     <>
-      <header>{isAuth && <WelcomeUser />}</header>
+      <header>
+        {isAuth && <WelcomeUser />}
+        <p>header</p>
+      </header>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
