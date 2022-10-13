@@ -24,7 +24,7 @@ const Paragraph = styled.p`
   font-family: Roboto;
   margin: 0 auto;
   padding: 50px 0;
-  font-size: 36px;
+  font-size: 26px;
   font-weight: 700;
   color: white;
   width: 400px;
