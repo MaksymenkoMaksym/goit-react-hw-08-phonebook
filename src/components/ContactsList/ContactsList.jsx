@@ -1,4 +1,3 @@
-import BasicModal from 'components/Modal/Modal';
 import PropTypes from 'prop-types';
 
 import { Button, Ul, Li } from './ContactList.styled';
@@ -14,16 +13,22 @@ const ContactsList = ({ contacts, onClickDelete, onClickEdit }) => {
           <Li key={contact.id}>
             {contact.name}:
             <span style={{ margin: '0 200px 0 auto' }}>{contact.number}</span>
-            <Button type="button" onClick={() => onClickDelete(contact.id)}>
-              Delete
-            </Button>
-            <Button type="button" onClick={() => onClickEdit(contact.id)}>
-              Edit
-            </Button>
+            <div
+              style={{
+                display: `flex`,
+                gap: '10px',
+              }}
+            >
+              <Button type="button" onClick={() => onClickDelete(contact.id)}>
+                Delete
+              </Button>
+              <Button type="button" onClick={() => onClickEdit(contact.id)}>
+                Edit
+              </Button>
+            </div>
           </Li>
         ))}
       </Ul>
-      <BasicModal />
     </>
   );
 };

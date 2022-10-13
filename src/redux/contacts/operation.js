@@ -39,19 +39,16 @@ export const addContact = createAsyncThunk(
     }
   }
 );
+export const updateContact = createAsyncThunk(
+  'contacts/updateContact',
+  async ({ id, ...contact }, thunkAPI) => {
+    try {
+      const response = await axiosAuth.patch(`/contacts/${id}`, contact);
 
-// export const findByName = createAsyncThunk(
-//   'contacts/findByName',
-//   async (name, thunkAPI) => {
-//     try {
-//       if (!name) {
-//         return '';
-//       }
-//       const response = await axiosAuth.get(`/contacts?name=${name}`);
-//       return response.data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
 export const findByName = () => {};

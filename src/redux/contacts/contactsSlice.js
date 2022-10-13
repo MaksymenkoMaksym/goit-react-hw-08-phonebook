@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTasks, deleteContact, addContact } from './operation';
+import {
+  fetchTasks,
+  deleteContact,
+  addContact,
+  updateContact,
+} from './operation';
 
 const pendingHandler = (state, action) => {
   state.contacts.isLoading = true;
@@ -15,10 +20,15 @@ const contactsSlice = createSlice({
   initialState: {
     contacts: { items: [], isLoading: false, error: null },
     filter: '',
+    editedContact: null,
   },
   reducers: {
     findByName(state, action) {
       state.filter = action.payload;
+    },
+    editContact(state, action) {
+      console.log(action);
+      state.editedContact = action.payload;
     },
   },
   extraReducers: {
@@ -28,13 +38,16 @@ const contactsSlice = createSlice({
     [deleteContact.rejected]: rejectedHandler,
     [addContact.pending]: pendingHandler,
     [addContact.rejected]: rejectedHandler,
-    // [findByName.pending]: pendingHandler,
-    // [findByName.rejected]: rejectedHandler,
-    // [findByName.fulfilled](state, action) {
-    //   state.contacts.isLoading = false;
-    //   state.contacts.error = null;
-    //   state.filter = action.payload;
-    // },
+    [updateContact.pending]: pendingHandler,
+    [updateContact.rejected]: rejectedHandler,
+    [updateContact.fulfilled](state, action) {
+      state.contacts.isLoading = false;
+      state.contacts.error = null;
+      state.editedContact = null;
+      state.contacts.items = state.contacts.items.map(el =>
+        el.id === action.payload.id ? (el = action.payload) : el
+      );
+    },
     [addContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
@@ -55,5 +68,5 @@ const contactsSlice = createSlice({
     },
   },
 });
-export const { findByName } = contactsSlice.actions;
+export const { findByName, editContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 
 export const SectionStyled = styled.section`
   position: relative;
-  width: 800px;
+  width: 600px;
   margin-right: auto;
   margin-left: auto;
   padding: 10px;
   border-radius: 20px;
   border: 5px solid #364448;
-  margin-bottom: 20px;
   background-color: #dfdbe5;
 `;
 export const TitleSection = styled.h1`
