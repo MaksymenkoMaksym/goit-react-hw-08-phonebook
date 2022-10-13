@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/authOperation';
+
 import SignInSide from '../pages/Auth';
 import { Route, Routes } from 'react-router-dom';
 import SignUp from './SignUp/SignUp';
@@ -6,9 +10,7 @@ import { Layout } from './Layout/Layout';
 import { HomePage } from 'pages/Home';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/auth/authOperation';
+
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,9 +20,9 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/home" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route
-            index
+            path="/phonebook"
             element={
               <PrivateRoute redirectTo="/signIn" component={<HomePage />} />
             }
@@ -29,16 +31,19 @@ export const App = () => {
           <Route
             path="/signIn"
             element={
-              <RestrictedRoute redirectTo="/home" component={<SignInSide />} />
+              <RestrictedRoute
+                redirectTo="/phonebook"
+                component={<SignInSide />}
+              />
             }
           />
           <Route
             path="/signUp"
             element={
-              <RestrictedRoute redirectTo="/home" component={<SignUp />} />
+              <RestrictedRoute redirectTo="/phonebook" component={<SignUp />} />
             }
           />
-          <Route path="*" element={<div>NotFound</div>} />
+          {/* <Route path="*" element={<div>NotFound</div>} /> */}
         </Route>
       </Routes>
     </>
