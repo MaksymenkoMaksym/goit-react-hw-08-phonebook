@@ -40,17 +40,18 @@ export const addContact = createAsyncThunk(
   }
 );
 
-export const findByName = createAsyncThunk(
-  'contacts/findByName',
-  async (name, thunkAPI) => {
-    try {
-      if (!name) {
-        return '';
-      }
-      const response = await axiosAuth.get(`/contacts?name=${name}`);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+// export const findByName = createAsyncThunk(
+//   'contacts/findByName',
+//   async (name, thunkAPI) => {
+//     try {
+//       if (!name) {
+//         return '';
+//       }
+//       const response = await axiosAuth.get(`/contacts?name=${name}`);
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
+export const findByName = () => {};

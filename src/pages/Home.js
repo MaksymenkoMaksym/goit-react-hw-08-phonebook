@@ -12,14 +12,14 @@ import {
   fetchTasks,
   deleteContact,
   addContact,
-  findByName,
 } from 'redux/contacts/operation';
 import { Loader } from 'components/Loader/Loader';
+import { findByName } from 'redux/contacts/contactsSlice';
 
 export const HomePage = () => {
   const { items: contacts, isLoading, error } = useSelector(getContacts);
   const { isAuth } = useSelector(getAuth);
-  const filter = useSelector(getFilter);
+  let filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +35,11 @@ export const HomePage = () => {
 
   const findByNameFilter = value => {
     const name = value.trim().toLocaleLowerCase();
-    dispatch(findByName(name));
+    if (!name) {
+      filter = '';
+    }
+    filter = contacts.filter(el => el.name.toLocaleLowerCase().includes(name));
+    dispatch(findByName(filter));
   };
   const onClickDelete = id => {
     dispatch(deleteContact(id));
