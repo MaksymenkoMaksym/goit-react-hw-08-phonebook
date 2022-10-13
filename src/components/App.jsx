@@ -43,7 +43,7 @@ export const App = () => {
               <RestrictedRoute redirectTo="/phonebook" component={<SignUp />} />
             }
           />
-          {/* <Route path="*" element={<div>NotFound</div>} /> */}
+          <Route path="*" element={<div>NotFound</div>} />
         </Route>
       </Routes>
     </>

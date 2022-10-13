@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { signUpUser } from 'redux/auth/authOperation';
-import { getAuth } from 'redux/auth/selectorsAuth';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -42,12 +41,6 @@ const theme = createTheme();
 export default function SignUp() {
   const [isDisable, setDisabled] = useState(false);
 
-  const navigate = useNavigate();
-  const { token } = useSelector(getAuth);
-  if (token) {
-    navigate('/signIn');
-  }
-
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -59,7 +52,6 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     };
-
     dispatch(signUpUser(user));
   };
 

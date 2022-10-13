@@ -33,6 +33,7 @@ export const authSlice = createSlice({
       state.user.name = action.payload.user.name;
       state.user.email = action.payload.user.email;
       state.token = action.payload.token;
+      state.isAuth = true;
     },
     [logInUser.pending]: pendingHandlerAuth,
     [logInUser.rejected]: rejectedHandler,
