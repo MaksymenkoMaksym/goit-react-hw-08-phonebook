@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import solution from 'assets/solutions.jpg';
 import styled from 'styled-components';
 import { getAuth } from 'redux/auth/selectorsAuth';
+import { WelcomeUser } from 'components/WelcomeUser/WelcomeUser';
 
 const Nav = styled.nav`
   display: flex;
@@ -41,10 +42,14 @@ export const Navigation = () => {
         Home
       </Link>
       {isAuth && <Link to="/phonebook">Phone book</Link>}
-      <div style={{ display: 'flex', gap: '20px', marginLeft: 'auto' }}>
-        <Link to="/signIn">Sign In</Link>
-        <Link to="/signUp">Sign Up</Link>
-      </div>
+      {isAuth ? (
+        <WelcomeUser />
+      ) : (
+        <div style={{ display: 'flex', gap: '20px', marginLeft: 'auto' }}>
+          <Link to="/signIn">Sign In</Link>
+          <Link to="/signUp">Sign Up</Link>
+        </div>
+      )}
     </Nav>
   );
 };

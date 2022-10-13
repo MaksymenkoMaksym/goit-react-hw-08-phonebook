@@ -14,7 +14,11 @@ export const Layout = () => {
   return (
     <>
       {/* <ResponsiveAppBar /> */}
-      <header>{isAuth ? <WelcomeUser /> : <Navigation />}</header>
+      {/* <header>{isAuth ? <WelcomeUser /> : <Navigation />}</header> */}
+      <header>
+        {/* <WelcomeUser /> */}
+        <Navigation />
+      </header>
 
       {isHome && (
         <Main>

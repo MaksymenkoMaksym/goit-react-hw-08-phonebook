@@ -6,12 +6,11 @@ export const WelcomeDiv = styled.div`
   display: -webkit-flex;
   display: -ms-flexbox;
   gap: 20px;
-  flex-direction: column;
-  width: 150px;
+  flex-direction: row;
   align-items: center;
-  margin-right: auto;
   margin-left: auto;
-  background-color: #d160a7b8;
+  background-color: #364448;
   border-radius: 20px;
   padding: 20px;
+  color: white;
 `;
