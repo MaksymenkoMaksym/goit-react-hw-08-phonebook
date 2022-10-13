@@ -5,13 +5,18 @@ export const SectionStyled = styled.section`
   width: 800px;
   margin-right: auto;
   margin-left: auto;
-  padding: 15px;
+  padding: 10px;
   border-radius: 20px;
-  border: 2px solid blueviolet;
+  border: 5px solid #364448;
   margin-bottom: 20px;
+  background-color: #dfdbe5;
 `;
 export const TitleSection = styled.h1`
   width: fit-content;
   margin: 0 auto 20px;
-  color: #256988;
+
+  color: white;
+  background-color: #364448;
+  border-radius: 15px;
+  padding: 10px;
 `;

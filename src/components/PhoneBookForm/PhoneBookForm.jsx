@@ -4,15 +4,13 @@ import { Form } from './PhoneBookForm.styled';
 import { Button } from 'components/ContactsList/ContactList.styled';
 import InputName from '../InputName/InputName';
 
-const PhoneBookForm = ({ onInputContact }) => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-
+const PhoneBookForm = ({ onInputContact, contact }) => {
+  const [name, setName] = useState(contact.name);
+  const [phone, setPhone] = useState(contact.phone);
   const handleSubmit = e => {
     e.preventDefault();
     onInputContact({ name, number: phone });
   };
-
   const handleChange = evt => {
     if (evt.target.name === 'name') {
       setName(evt.target.value);

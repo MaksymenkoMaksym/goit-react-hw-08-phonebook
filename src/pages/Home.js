@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import PhoneBookForm from 'components/PhoneBookForm/PhoneBookForm';
@@ -7,6 +7,7 @@ import Section from 'components/Section/Section';
 import InputSearch from 'components/InputSearch/InputSearch';
 import { getContacts, getFilter } from 'redux/contacts/contactsSelectors';
 import { getAuth } from 'redux/auth/selectorsAuth';
+import cool from '../assets/cool-background.png';
 
 import {
   fetchTasks,
@@ -17,6 +18,7 @@ import { Loader } from 'components/Loader/Loader';
 import { findByName } from 'redux/contacts/contactsSlice';
 
 export const HomePage = () => {
+  const [contact, setContact] = useState({ name: '', phone: '' });
   const { items: contacts, isLoading, error } = useSelector(getContacts);
   const { isAuth } = useSelector(getAuth);
   let filter = useSelector(getFilter);
@@ -44,12 +46,16 @@ export const HomePage = () => {
   const onClickDelete = id => {
     dispatch(deleteContact(id));
   };
+  const onClickEdit = id => {
+    const contact = contacts.find(el => el.id === id);
+    setContact(contact);
+  };
   return (
-    <main>
+    <main style={{ backgroundImage: `url(${cool})`, backgroundSize: 'cover' }}>
       {isAuth && (
         <>
           <Section title="PhoneBook">
-            <PhoneBookForm onInputContact={onInputContact} />
+            <PhoneBookForm onInputContact={onInputContact} contact={contact} />
           </Section>
 
           <Section title="Contacts">
@@ -71,6 +77,7 @@ export const HomePage = () => {
             <p>{error}</p>
             <ContactsList
               onClickDelete={onClickDelete}
+              onClickEdit={onClickEdit}
               contacts={filter === '' ? contacts : filter}
             />
           </Section>

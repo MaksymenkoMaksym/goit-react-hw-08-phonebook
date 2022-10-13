@@ -11,6 +11,6 @@ export const WelcomeDiv = styled.div`
   margin-left: auto;
   background-color: #364448;
   border-radius: 20px;
-  padding: 20px;
+  padding: 5px;
   color: white;
 `;

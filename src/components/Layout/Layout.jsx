@@ -13,13 +13,9 @@ export const Layout = () => {
   const isHome = location.pathname === '/';
   return (
     <>
-      {/* <ResponsiveAppBar /> */}
-      {/* <header>{isAuth ? <WelcomeUser /> : <Navigation />}</header> */}
       <header>
-        {/* <WelcomeUser /> */}
         <Navigation />
       </header>
-
       {isHome && (
         <Main>
           <h1>My site</h1>

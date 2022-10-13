@@ -1,8 +1,9 @@
+import BasicModal from 'components/Modal/Modal';
 import PropTypes from 'prop-types';
 
 import { Button, Ul, Li } from './ContactList.styled';
 
-const ContactsList = ({ contacts, onClickDelete }) => {
+const ContactsList = ({ contacts, onClickDelete, onClickEdit }) => {
   if (!contacts.length) {
     return <p>No any data</p>;
   }
@@ -16,9 +17,13 @@ const ContactsList = ({ contacts, onClickDelete }) => {
             <Button type="button" onClick={() => onClickDelete(contact.id)}>
               Delete
             </Button>
+            <Button type="button" onClick={() => onClickEdit(contact.id)}>
+              Edit
+            </Button>
           </Li>
         ))}
       </Ul>
+      <BasicModal />
     </>
   );
 };
