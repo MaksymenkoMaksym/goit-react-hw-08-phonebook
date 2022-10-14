@@ -7,8 +7,9 @@ import { getAuth } from 'redux/auth/selectorsAuth';
  * - Otherwise render <Navigate> to redirectTo
  */
 
-export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isAuth } = useSelector(getAuth);
   //   const shouldRedirect = !isLoggedIn && !isRefreshing;
   return isAuth ? Component : <Navigate to={redirectTo} />;
 };
+export default PrivateRoute;

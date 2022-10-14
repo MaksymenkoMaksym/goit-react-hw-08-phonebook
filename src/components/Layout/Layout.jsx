@@ -1,14 +1,10 @@
-// import { useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
-// import { getAuth } from 'redux/auth/selectorsAuth';
 
-// import { WelcomeUser } from 'components/WelcomeUser/WelcomeUser';
 import { Navigation } from 'components/Navigation/Navigation';
 import Main from 'pages/Main';
-// import ResponsiveAppBar from 'components/AppBar/AppBar';
+import { Suspense } from 'react';
 
-export const Layout = () => {
-  // const { isAuth } = useSelector(getAuth);
+const Layout = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   return (
@@ -16,12 +12,12 @@ export const Layout = () => {
       <header>
         <Navigation />
       </header>
-      {isHome && (
-        <Main>
-          <h1>My site</h1>
-        </Main>
-      )}
-      <Outlet />
+      {isHome && <Main />}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
+
+export default Layout;

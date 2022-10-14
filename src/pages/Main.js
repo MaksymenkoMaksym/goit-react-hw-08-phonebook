@@ -23,7 +23,7 @@ const MainBox = styled.main`
 const Paragraph = styled.p`
   font-family: Roboto;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 25px 0;
   font-size: 26px;
   font-weight: 700;
   color: white;
@@ -80,15 +80,20 @@ const Title = styled.h1`
   font-size: 36px;
   font-weight: 700;
   color: white;
+  margin-bottom: 20px;
   width: fit-content;
   line-height: 1.5;
-  -webkit-animation: shadow-drop-center 0.4s
+  -webkit-animation: shadow-drop-center 0.5s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: shadow-drop-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: shadow-drop-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @-webkit-keyframes shadow-drop-center {
     0% {
       -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    50% {
+      -webkit-box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35);
     }
     100% {
       -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
@@ -99,6 +104,10 @@ const Title = styled.h1`
     0% {
       -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    50% {
+      -webkit-box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35);
     }
     100% {
       -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
@@ -112,13 +121,15 @@ const Main = () => {
       <MainBox>
         <Title>Let's go! Create new account and start 🚀</Title>
         <Paragraph>
-          Everyhing you need to manage your contacs. The application will help
-          you quickly find the desired conact and keep order in your address
+          Everything you need to manage your contacts. The application will help
+          you quickly find the desired contact and keep order in your address
           book.
         </Paragraph>
         <Paragraph>
-          Contact management: Create, modify, delete and store in your private
-          account contacts.
+          <span style={{ display: 'block' }}>Contact management:</span>
+          <span style={{ display: 'block' }}>
+            Create, modify, delete and store in your private account contacts.
+          </span>
         </Paragraph>
       </MainBox>
     </>

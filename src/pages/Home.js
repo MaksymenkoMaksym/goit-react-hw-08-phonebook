@@ -22,7 +22,7 @@ import {
 import { Loader } from 'components/Loader/Loader';
 import { editContact, findByName } from 'redux/contacts/contactsSlice';
 
-export const HomePage = () => {
+const HomePage = () => {
   const editedContact = useSelector(getEditedContact);
 
   const { items: contacts, isLoading, error } = useSelector(getContacts);
@@ -107,3 +107,5 @@ export const HomePage = () => {
     </main>
   );
 };
+
+export default HomePage;
