@@ -8,7 +8,7 @@ import { getAuth } from 'redux/auth/selectorsAuth';
  */
 
 const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
-  const { isAuth } = useSelector(getAuth);
+  const { token: isAuth } = useSelector(getAuth);
   //   const shouldRedirect = !isLoggedIn && !isRefreshing;
   return isAuth ? Component : <Navigate to={redirectTo} />;
 };

@@ -8,7 +8,7 @@ import { getAuth } from 'redux/auth/selectorsAuth';
  */
 
 const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
-  const { isAuth } = useSelector(getAuth);
+  const { token: isAuth } = useSelector(getAuth);
   return isAuth ? <Navigate to={redirectTo} /> : Component;
 };
 export default RestrictedRoute;
