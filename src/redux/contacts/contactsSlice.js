@@ -27,7 +27,6 @@ const contactsSlice = createSlice({
       state.filter = action.payload;
     },
     editContact(state, action) {
-      console.log(action);
       state.editedContact = action.payload;
     },
   },

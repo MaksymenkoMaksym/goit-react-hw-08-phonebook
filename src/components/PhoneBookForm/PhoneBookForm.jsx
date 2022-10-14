@@ -18,7 +18,6 @@ const PhoneBookForm = ({ onInputContact }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onInputContact({ name, number: phone });
-    console.log(e.target);
     reset();
   };
 
