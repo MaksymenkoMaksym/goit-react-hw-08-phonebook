@@ -1,4 +1,3 @@
-import { SatelliteAltOutlined } from '@mui/icons-material';
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchTasks,
@@ -62,13 +61,9 @@ const contactsSlice = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.contacts.isLoading = false;
       state.contacts.error = null;
-      state.contacts.item = state.contacts.items.filter(
-        el => el.id !== action.payload.id
+      state.contacts.items = state.contacts.items.filter(
+        el => el.id !== action.payload
       );
-      // const i = state.contacts.items.findIndex(
-      //   el => el.id === action.payload.id
-      // );
-      // state.contacts.items.splice(i, 1);
     },
   },
 });
