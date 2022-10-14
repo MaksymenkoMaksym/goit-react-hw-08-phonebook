@@ -11,8 +11,7 @@ const ContactsList = ({ contacts, onClickDelete, onClickEdit }) => {
       <Ul>
         {contacts.map(contact => (
           <Li key={contact.id}>
-            {contact.name}:
-            <span style={{ margin: '0 200px 0 auto' }}>{contact.number}</span>
+            {contact.name}:<span>{contact.number}</span>
             <div
               style={{
                 display: `flex`,
